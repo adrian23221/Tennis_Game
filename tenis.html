@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tennis JS Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: darkgray;
+
+        }
+
+        canvas {
+            border: 3px solid #fff;
+        }
+
+    </style>
+</head>
+
+<body>
+    <canvas></canvas>
+    <script>
+        const canvas = document.querySelector('canvas');
+        //Przypisuje wartosc canvas z HTMLa
+        const ctx = canvas.getContext('2d');
+        //umozliwiam elementowi pobranie wielu wlasciwosci i metod
+
+        canvas.width = 1000;
+        canvas.height = 500;
+
+        const cw = canvas.width;
+        const ch = canvas.height;
+        //nasze skroty
+        const ballSize = 20; //wielkosc pilki
+        const ballX = cw / 2 - ballSize / 2 //od 490 do 510 px
+        const ballY = ch / 2 - ballSize / 2 //od 240 do 260 px
+
+        const paddelHeight = 100;
+        const paddleWidth = 20;
+
+        const playerX = 70;
+        const aiX = 910;
+
+        let playerY = 200;
+        let aiY = 200;
+
+        function player() {
+            ctx.fillStyle = 'green';
+            ctx.fillRect(playerX, playerY, paddleWidth, paddelHeight);
+        }
+
+        function ball() {
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(ballX, ballY, ballSize, ballSize);
+        }
+
+        function AI() {
+            ctx.fillStyle = 'yellow';
+            ctx.fillRect(aiX, aiY, paddleWidth, paddelHeight);
+        }
+
+        function table() {
+            //table
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0, 0, cw, ch);
+            //Metoda fillRect(x,y,width,height)
+
+            //lines
+            ctx.fillStyle = 'white';
+            ctx.fillRect(100, 100, 200, 200);
+        }
+        ball()
+        table()
+        player()
+        AI()
+
+    </script>
+</body>
+
+</html>
